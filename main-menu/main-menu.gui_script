@@ -1,0 +1,70 @@
+local monarch = require "monarch.monarch"
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+test_click = function(self, action, node, callback)
+	if not gui.is_enabled(node) then return false end
+	if gui.pick_node(node, action.x, action.y) then
+		callback(self)
+		return true
+	end
+	return false
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+	if action_id == hash("click") or action_id == hash("touch") then
+			if action.released then			
+				local screen1 = gui.get_node("screen1")
+				test_click(self, action, screen1, function()
+					monarch.show("screen1")
+				end)
+
+				local screen2 = gui.get_node("screen2")
+				test_click(self, action, screen2, function()
+					monarch.show("screen2")
+				end)
+
+				local screen3 = gui.get_node("screen3")
+				test_click(self, action, screen3, function()
+					monarch.show("screen3")
+				end)
+			end
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

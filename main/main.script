@@ -1,0 +1,21 @@
+local monarch = require "monarch.monarch"
+
+function init(self)
+	monarch.debug()
+	msg.post("#", "init_monarch") -- wait until init() has been called for all screen.script instances
+	msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
+end
+
+function on_input(self, action_id, action)
+	
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("init_monarch") then
+		monarch.show(hash("logo"), { no_stack = true })
+	end
+end
+
+
+
+		
