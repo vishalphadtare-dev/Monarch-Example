@@ -6,7 +6,7 @@ function init(self)
 
 
 	timer.delay(1, false, function()
-		monarch.show(hash("main-menu"), {no_stack = true})
+		monarch.show(hash("main-menu"))
 	end)
 end
 

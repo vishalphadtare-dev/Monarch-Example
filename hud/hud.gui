@@ -1,11 +1,7 @@
-script: "/main-menu/main-menu.gui_script"
+script: "/hud/hud.gui_script"
 fonts {
   name: "system_font"
   font: "/builtins/fonts/system_font.font"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
 }
 background_color {
   x: 0.0
@@ -16,7 +12,7 @@ background_color {
 nodes {
   position {
     x: 320.0
-    y: 570.0
+    y: 1085.0
     z: 0.0
     w: 1.0
   }
@@ -34,74 +30,20 @@ nodes {
   }
   size {
     x: 640.0
-    y: 1136.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 0.9019608
-    y: 0.5019608
-    z: 0.3019608
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "main/background"
-  id: "box"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 320.0
-    y: 854.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
     x: 1.0
     y: 1.0
     z: 1.0
     w: 1.0
   }
-  size {
-    x: 450.0
-    y: 200.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "screen1"
+  id: "container"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -135,14 +77,124 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 640.0
     y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9019608
+    y: 0.5019608
+    z: 0.3019608
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "container"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: -215.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 150.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "screen1"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "container"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 150.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -186,8 +238,8 @@ nodes {
 }
 nodes {
   position {
-    x: 320.0
-    y: 570.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -204,8 +256,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 450.0
-    y: 200.0
+    x: 150.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -223,6 +275,7 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
+  parent: "container"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -252,14 +305,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 150.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -303,8 +356,8 @@ nodes {
 }
 nodes {
   position {
-    x: 320.0
-    y: 266.0
+    x: 215.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -321,8 +374,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 450.0
-    y: 200.0
+    x: 150.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -340,6 +393,7 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
+  parent: "container"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -369,14 +423,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 150.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }

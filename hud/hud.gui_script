@@ -1,8 +1,12 @@
+
 monarch = require "monarch.monarch"
+
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+	local container = gui.get_node("container")
+	gui.set_color(container, vmath.vector4(1,1,1,0))
 end
 
 function final(self)
@@ -18,6 +22,17 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("visible") then
+		local container = gui.get_node("container")
+		if message.value == true then
+			msg.post(".", "acquire_input_focus")
+			gui.set_color(container, vmath.vector4(1,1,1,1))
+			gui.set_render_order(1)
+		else
+			msg.post(".", "release_input_focus")
+			gui.set_color(container, vmath.vector4(1,1,1,0))
+		end
+	end
 	-- Add message-handling code here
 	-- Learn more: https://defold.com/manuals/message-passing/
 	-- Remove this function if not needed
@@ -33,12 +48,22 @@ function on_input(self, action_id, action)
 	-- be received regardless of where on the screen it happened.
 	-- Learn more: https://defold.com/manuals/input/
 	-- Remove this function if not needed
+	
 	if action_id == hash("click") or action_id == hash("touch") then
 		if action.released then
-			local subscreen = gui.get_node("subscreen1")
-			test_click(self, action, subscreen, function()
-				msg.post("hud:/go#hud", "visible", { value = false })
-				monarch.show(hash("screen2_subscreen1"))
+			local screen1 = gui.get_node("screen1")
+			test_click(self, action, screen1, function()
+				monarch.show(hash("screen1"))
+			end)
+
+			local screen2 = gui.get_node("screen2")
+			test_click(self, action, screen2, function()
+				monarch.show(hash("screen2"))
+			end)
+
+			local screen3 = gui.get_node("screen3")
+			test_click(self, action, screen3, function()
+				monarch.show(hash("screen3"))
 			end)
 		end
 	end

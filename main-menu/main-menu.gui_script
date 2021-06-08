@@ -1,6 +1,9 @@
 local monarch = require "monarch.monarch"
 
 function init(self)
+
+	msg.post("main:/gui#hud", "load")
+	msg.post("/gui", "acquire_input_focus")
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
@@ -31,6 +34,10 @@ function on_message(self, message_id, message, sender)
 	-- Add message-handling code here
 	-- Learn more: https://defold.com/manuals/message-passing/
 	-- Remove this function if not needed
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+	end
 end
 
 function on_input(self, action_id, action)
@@ -47,16 +54,20 @@ function on_input(self, action_id, action)
 			if action.released then			
 				local screen1 = gui.get_node("screen1")
 				test_click(self, action, screen1, function()
-					monarch.show("screen1")
+					msg.post("hud:/go#hud", "visible", { value = true })
+					-- I am actually using monarch.show(hash("screen1"), { no_stack = true})
+					monarch.show(hash("screen1"))
 				end)
 
 				local screen2 = gui.get_node("screen2")
 				test_click(self, action, screen2, function()
+					msg.post("hud:/go#hud", "init")
 					monarch.show("screen2")
 				end)
 
 				local screen3 = gui.get_node("screen3")
 				test_click(self, action, screen3, function()
+					msg.post("hud:/go#hud", "init")
 					monarch.show("screen3")
 				end)
 			end
